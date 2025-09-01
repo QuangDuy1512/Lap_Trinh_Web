@@ -48,5 +48,18 @@ public class UserServiceImpl implements UserService {
     public boolean checkExistPhone(String phone) {
         return userDao.checkExistPhone(phone);
     }
+    
+    @Override
+    public User get(String username) {
+        return userDao.get(username);
+    }
+
+    public User login(String username, String password) {
+        User user = this.get(username);
+        if (user != null && password.equals(user.getPassWord())) {
+            return user;
+        }
+        return null;
+    }
 }
 

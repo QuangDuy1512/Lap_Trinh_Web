@@ -73,9 +73,12 @@
     
     <button type="submit" class="btn btn-register">Đăng ký</button>
     
-    <div class="bottom-text">
-      Nếu bạn đã có tài khoản, hãy <a href="login">Đăng nhập</a>
-    </div>
+	<div class="bottom-text">
+ 		Nếu bạn đã có tài khoản, hãy 
+  		<a href="<%= request.getContextPath() %>/login.jsp">Đăng nhập</a> 
+  | 	<a href="<%= request.getContextPath() %>/forget.jsp">Quên mật khẩu?</a>
+	</div>
+
   </form>
 </div>
 

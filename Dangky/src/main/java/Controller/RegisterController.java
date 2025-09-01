@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"/", "/register"})
+@WebServlet(urlPatterns = {"/register"})
 public class RegisterController extends HttpServlet {
 
     @Override

@@ -8,4 +8,6 @@ public interface UserService {
 	boolean checkExistEmail(String email);
 	boolean checkExistUsername(String username);
 	boolean checkExistPhone(String phone);
+	User get(String username);
+	User login(String username, String password);
 }
