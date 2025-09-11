@@ -1,24 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <persistence xmlns="https://jakarta.ee/xml/ns/persistence"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
-https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
-	version="3.0">
-	<persistence-unit name="dataSource">
-		<properties>
-			<property name="jakarta.persistence.jdbc.url"
-				value="jdbc:sqlserver://MSI\SQLEXPRESS:1433;databaseName=jpact5st7;encrypt=true;trustServerCertificate=true;" />
-			<property name="jakarta.persistence.jdbc.driver"
-				value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-			<property name="jakarta.persistence.jdbc.user" value="sa" />
-			<property name="jakarta.persistence.jdbc.password"
-				value="123456" />
-			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="true" />
-			<property name="hibernate.hbm2ddl.auto" value="update" />
-			<property name="hibernate.dialect"
-				value="org.hibernate.dialect.SQLServer2012Dialect" />
-		</properties>
-	</persistence-unit>
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+                                 https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+    <persistence-unit name="dataSource" transaction-type="RESOURCE_LOCAL">
+        
+        <!-- Khai báo các Entity để Hibernate quản lý -->
+        <class>vn.iotstar.entity.User</class>
+        <class>vn.iotstar.entity.Category</class>
+        <class>vn.iotstar.entity.ManagerUser</class>
+
+        <properties>
+            <!-- Kết nối SQL Server -->
+            <property name="jakarta.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:sqlserver://MSI\SQLEXPRESS:1433;databaseName=jpact5st7;encrypt=true;trustServerCertificate=true;"/>
+            <property name="jakarta.persistence.jdbc.user" value="sa"/>
+            <property name="jakarta.persistence.jdbc.password" value="123456"/>
+
+            <!-- Hibernate dialect cho SQL Server -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+
+            <!-- Tự động tạo / cập nhật bảng -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            
+            <!-- Hiển thị SQL trên console -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            
+            <!-- Thêm cấu hình connection pool -->
+            <property name="hibernate.c3p0.min_size" value="5"/>
+            <property name="hibernate.c3p0.max_size" value="20"/>
+            <property name="hibernate.c3p0.timeout" value="300"/>
+            <property name="hibernate.c3p0.max_statements" value="50"/>
+            <property name="hibernate.c3p0.idle_test_period" value="3000"/>
+        </properties>
+    </persistence-unit>
 </persistence>
